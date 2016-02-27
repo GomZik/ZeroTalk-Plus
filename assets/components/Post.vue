@@ -2,7 +2,13 @@
   import ContentBlock from 'components/ContentBlock.vue'
 
   export default {
-    props: ['selected', 'sticked'],
+    props: {
+      selected: {},
+      sticked: {},
+      visited: {
+        default: false
+      }
+    },
     components: {
       ContentBlock
     }
@@ -11,6 +17,10 @@
 
 <template>
   <content-block>
+    <div class="post__dot" :class="{
+      'post__dot--visited': visited,
+      'post__dot--new-messages': !visited
+    }">•</div>
     <div class="post__preview">
       <div class="post__preview__item">
         <i class="icon-topic"></i>
@@ -18,7 +28,7 @@
     </div>
     <a href="#" class="post__header">
       <h2 class="post__header__title">
-        <slot  name="title"></slot>
+        <slot name="title"></slot>
       </h2>
     </a>
     <div class="post__body">
@@ -31,9 +41,23 @@
   .post
     position relative
 
-    &__preview
-      float left
+    &__dot
       position absolute
+      font-size 40px
+      vertical-align middle
+      margin-top 5px
+
+      &--visited
+        color: #E2E2E2
+
+      &--new-messages
+        color #74BBFE
+
+    &__preview
+      position absolute
+      opacity 0.3
+      margin-left 30px
+      margin-top 10px
 
     &__header
       display inline-block
@@ -45,5 +69,5 @@
 
     &__header,
     &__body
-      margin-left 60px
+      margin-left 98px
 </style>
