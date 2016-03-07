@@ -7,10 +7,19 @@
   import MyButton from 'components/Button.vue'
   import Post from 'components/Post.vue'
 
+  import {store} from 'store'
+
   export default {
+    data() {
+      return {
+        posts: this.$select('posts')
+      }
+    },
     methods: {
       onClick() {
         console.log('Clicked')
+        console.log(store.state)
+        console.log(this.posts)
       }
     },
     components: {
