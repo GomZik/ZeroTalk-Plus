@@ -70,4 +70,7 @@
     &__header,
     &__body
       margin-left 98px
+
+    &__body
+      min-height 40px
 </style>

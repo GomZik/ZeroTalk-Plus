@@ -1,14 +1,30 @@
 <script>
-  export default {}
+  export default {
+    props: {
+      'bgcolor': {
+        default: '#db3207'
+      }
+    }
+  }
 </script>
 
 <template>
-  <a class="logo">Ru-Zer0Talk</a>
-  <span class="prj-logo">+</span>
-  <!-- TODO: Use variable from db -->
+  <div class="logo-container">
+    <a class="logo" :style="{
+      backgroundColor: bgcolor
+    }">
+      <slot>ZeroTalk</slot>
+    </a>
+    <span class="prj-logo" :style="{
+      color: bgcolor
+    }">+</span>
+  </div>
 </template>
 
 <style lang="stylus" scoped>
+  .logo-container
+    float left
+
   .logo
     padding 10px
     background-color #DB3207
